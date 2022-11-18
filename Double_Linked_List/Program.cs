@@ -38,7 +38,21 @@ namespace Double_Linked_List
             newNode.noMhs = nim;
             newNode.name = nm;
 
-            
+            //Check if the list empty
+            if (START == null || nim <= START.noMhs)
+            {
+                if ((START != null) && (nim == START.noMhs))
+                {
+                    Console.WriteLine("\nDuplicate umber not allowed");
+                    return;
+                }
+                newNode.next = START;
+                if (START != null)
+                    START.prev = newNode;
+                newNode.next = null;
+                START = newNode;
+                return;
+            }
         }
     }
     internal class Program
