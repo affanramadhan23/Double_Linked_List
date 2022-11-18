@@ -93,6 +93,32 @@ namespace Double_Linked_List
             return (current != null);
         }
 
+        public bool dellNode(int rollNo)
+        {
+            Node Previous, current;
+            Previous = current = null;
+            if (Search(rollNo, ref Previous, ref current) == false)
+                return false;
+            // the beginning of data
+            if (current.next == null)
+            {
+                Previous.next = null;
+                return true;
+            }
+            //Node between two nodes in the list
+            if(current == START)
+            {
+                START = START.next;
+                if (START != null)
+                    START.prev = null;
+                return true;
+            }
+
+            //* if the to be deleted is in between the list then following lines is executed.
+            Previous.next = current.next;
+            current.next.prev = Previous;
+            return true;
+        }
     }
     internal class Program
     {
